@@ -1,0 +1,11 @@
+com\smartbike\performance\repository\RideRepository.class
+com\smartbike\performance\service\BikeService.class
+com\smartbike\performance\SmartBikeApplication.class
+com\smartbike\performance\exception\GlobalExceptionHandler.class
+com\smartbike\performance\repository\BikeRepository.class
+com\smartbike\performance\dto\BikePerformanceReport.class
+com\smartbike\performance\entity\Ride.class
+com\smartbike\performance\controller\BikeController.class
+com\smartbike\performance\entity\Bike.class
+com\smartbike\performance\service\RideService.class
+com\smartbike\performance\controller\RideController.class

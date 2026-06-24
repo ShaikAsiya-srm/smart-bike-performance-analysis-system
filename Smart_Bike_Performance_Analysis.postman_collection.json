@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "c1f72782-b7e5-4927-9a84-48618cb9d50b",
+		"name": "Smart Bike Performance Analysis",
+		"description": "Postman collection to test the Smart Bike Performance Analysis System APIs.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bikes",
+			"item": [
+				{
+					"name": "Add Bike 1 (Royal Enfield)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Royal Enfield\",\n  \"model\": \"Classic 350\",\n  \"fuelType\": \"Petrol\",\n  \"tankCapacity\": 13.5\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bikes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bikes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Bike 2 (Yamaha FZ)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Yamaha\",\n  \"model\": \"FZ-S V3\",\n  \"fuelType\": \"Petrol\",\n  \"tankCapacity\": 13.0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bikes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bikes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bikes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/bikes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bikes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bike By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/bikes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bikes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rides",
+			"item": [
+				{
+					"name": "Add Ride 1 for Bike 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"distance\": 150.0,\n  \"durationHours\": 3.0,\n  \"fuelConsumed\": 4.0,\n  \"fuelPricePerLiter\": 105.50,\n  \"maxSpeed\": 95.0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/rides/bike/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rides",
+								"bike",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Ride 2 for Bike 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"distance\": 220.0,\n  \"durationHours\": 4.5,\n  \"fuelConsumed\": 5.5,\n  \"fuelPricePerLiter\": 106.00,\n  \"maxSpeed\": 110.0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/rides/bike/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rides",
+								"bike",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rides for Bike 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/rides/bike/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rides",
+								"bike",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bike Performance Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/rides/bike/1/report",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rides",
+								"bike",
+								"1",
+								"report"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
