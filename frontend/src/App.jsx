@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const API_BASE = 'http://localhost:8080/api';
+const BIKE_NAME_OPTIONS = [
+  'Royal Enfield',
+  'Yamaha',
+  'Honda',
+  'Hero',
+  'Bajaj',
+  'TVS',
+  'KTM',
+  'Suzuki',
+  'Others'
+];
 
 function App() {
   // Navigation State
@@ -16,6 +27,7 @@ function App() {
   // Form States - Register Bike
   const [bikeForm, setBikeForm] = useState({
     name: '',
+    customName: '',
     model: '',
     fuelType: 'Petrol',
     tankCapacity: ''
@@ -141,7 +153,7 @@ function App() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: bikeForm.name,
+          name: bikeForm.name === 'Others' ? bikeForm.customName.trim() : bikeForm.name,
           model: bikeForm.model,
           fuelType: bikeForm.fuelType,
           tankCapacity: parseFloat(bikeForm.tankCapacity)
@@ -152,7 +164,7 @@ function App() {
       const savedBike = await res.json();
 
       showToast(`${savedBike.name} ${savedBike.model} registered successfully!`, 'success');
-      setBikeForm({ name: '', model: '', fuelType: 'Petrol', tankCapacity: '' });
+      setBikeForm({ name: '', customName: '', model: '', fuelType: 'Petrol', tankCapacity: '' });
       fetchBikes();
     } catch (err) {
       showToast('Failed to add bike.', 'error');
@@ -361,16 +373,33 @@ function App() {
                 <form onSubmit={handleBikeSubmit}>
                   <div className="form-group">
                     <label className="form-label" htmlFor="bike-name">Bike/Manufacturer Name</label>
-                    <input 
-                      className="form-input" 
-                      type="text" 
-                      id="bike-name" 
-                      placeholder="e.g. Royal Enfield, Yamaha"
+                    <select
+                      className="form-select"
+                      id="bike-name"
                       value={bikeForm.name}
-                      onChange={(e) => setBikeForm({ ...bikeForm, name: e.target.value })}
-                      required 
-                    />
+                      onChange={(e) => setBikeForm({ ...bikeForm, name: e.target.value, customName: '' })}
+                      required
+                    >
+                      <option value="" disabled>Choose a bike name...</option>
+                      {BIKE_NAME_OPTIONS.map(name => (
+                        <option key={name} value={name}>{name}</option>
+                      ))}
+                    </select>
                   </div>
+                  {bikeForm.name === 'Others' && (
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="bike-custom-name">Other Bike/Manufacturer Name</label>
+                      <input
+                        className="form-input"
+                        type="text"
+                        id="bike-custom-name"
+                        placeholder="Enter bike name"
+                        value={bikeForm.customName}
+                        onChange={(e) => setBikeForm({ ...bikeForm, customName: e.target.value })}
+                        required
+                      />
+                    </div>
+                  )}
                   <div className="form-group">
                     <label className="form-label" htmlFor="bike-model">Model Name</label>
                     <input 
@@ -706,3 +735,5 @@ function App() {
 }
 
 export default App;
+
+
